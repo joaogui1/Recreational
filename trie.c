@@ -13,6 +13,13 @@ trie *create(){
   return ret;
 }
 
+void *destroy(trie *t){
+  for(int i = 0; i < 26; ++i)
+     if((t->node)[i] != NULL)
+         destroy((t->node)[i])
+  free(t);
+}
+
 void insert(trie *dict, char *word){
   int pos = (word[0] <= 'Z')?(word[0] - 'A'):(word[0] - 'a');
   if((dict->node)[pos] == NULL) (dict->node)[pos] = create();
