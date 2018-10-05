@@ -2,24 +2,26 @@
 #include <stdlib.h>
 
 struct Trie{
-  char ending;
+  char ending; //1 if a terminating character of a word
   struct Trie *node[26];
 };
-
 typedef struct Trie trie;
 
+//Trie constructor
 trie *create(){
   trie *ret = calloc(1, sizeof(trie));
   return ret;
 }
 
-void *destroy(trie *t){
+//Trie destructor
+void destroy(trie *t){
   for(int i = 0; i < 26; ++i)
-     if((t->node)[i] != NULL)
-         destroy((t->node)[i])
+  if((t->node)[i] != NULL)
+    destroy((t->node)[i]);
   free(t);
 }
 
+//Insert word in Trie
 void insert(trie *dict, char *word){
   int pos = (word[0] <= 'Z')?(word[0] - 'A'):(word[0] - 'a');
   if((dict->node)[pos] == NULL) (dict->node)[pos] = create();
@@ -27,12 +29,6 @@ void insert(trie *dict, char *word){
   else  insert((dict->node)[pos], word + 1);
 }
 
-int search(trie *dict, char *word){
-  int pos = (word[0] <= 'Z')?(word[0] - 'A'):(word[0] - 'a');
-  if((dict->node)[pos] == NULL) return 0;
-  if(word[1] == '\0') return (dict->node)[pos]->ending;
-  search((dict->node)[pos], word + 1);
-}
 
 int main(){
   int n, q;
