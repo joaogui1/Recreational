@@ -1,56 +1,47 @@
 #include <bits/stdc++.h>
 
+#define ff first
+#define ss second
+
 using namespace std;
-typedef unsigned __int64 uint64_t;
+typedef pair<int, int> pii;
 
-uint64_t MurmurHash64A ( const void * key, int len, unsigned int seed )
-{
-	const uint64_t m = 0xc6a4a7935bd1e995;
-	const int r = 47;
-
-	uint64_t h = seed ^ (len * m);
-
-	const uint64_t * data = (const uint64_t *)key;
-	const uint64_t * end = data + (len/8);
-
-	while(data != end)
-	{
-		uint64_t k = *data++;
-
-		k *= m;
-		k ^= k >> r;
-		k *= m;
-
-		h ^= k;
-		h *= m;
-	}
-
-	const unsigned char * data2 = (const unsigned char*)data;
-
-	switch(len & 7)
-	{
-	case 7: h ^= uint64_t(data2[6]) << 48;
-	case 6: h ^= uint64_t(data2[5]) << 40;
-	case 5: h ^= uint64_t(data2[4]) << 32;
-	case 4: h ^= uint64_t(data2[3]) << 24;
-	case 3: h ^= uint64_t(data2[2]) << 16;
-	case 2: h ^= uint64_t(data2[1]) << 8;
-	case 1: h ^= uint64_t(data2[0]);
-	        h *= m;
-	};
-
-	h ^= h >> r;
-	h *= m;
-	h ^= h >> r;
-
-	return h;
+int Hash(pii seeds, int n, int size){
+	return (seeds.ff*n + seeds.ss)%size;
 }
 
 class bloom_filter{
-  bitset <1000> bits;
+	int number_hashes;
+  bitset <1009> bits;
+	vector<pii> hashes_seeds;
 
-  void add(int x);
-  int check(int x){
-
-  }
+	public:
+		bloom_filter(int);
+  	void add(int x){
+			for(int i = 0; i < number_hashes; ++i)
+				bits.set(Hash(hashes_seeds[i], x, 1009));
+			return;
+		}
+	  int check(int x){
+			for(int i = 0; i < number_hashes; ++i)
+				if(!bits[Hash(hashes_seeds[i], x, 1009)])
+					return 0;
+			return 1;
+	  }
 };
+
+bloom_filter::bloom_filter(int k){
+	int a, b;
+	number_hashes = k;
+	for(int i = 0; i < k; ++i){
+		a = rand()%1009, b = rand()%1009;
+		hashes_seeds.push_back(pii(a, b));
+	}
+}
+
+int main(){
+	bloom_filter a (3);
+	a.add(5);
+	a.add(7);
+	printf("%d\n", a.check(8));
+}
