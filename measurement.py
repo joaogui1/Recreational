@@ -23,7 +23,14 @@ class Measurement:
     def __str__(self):
         return f'{self.val} ± {self.delta}'
 
-l = Measurement(1.2, 0.01)
-b = Measurement(4.2, 0.1)
+d = Measurement(9.7*(10**-4), 0.00005)
+b = Measurement(0.02475, 0.00005)
+d3 = d**3
+w = Measurement(3.716, 9.81*10**(-5))
+p = d3*b*(2.86)
+E = w*4
+E /= p
+E *= 1/(10**10)
 
-print(l + b)
+
+print(E)
