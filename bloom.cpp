@@ -12,7 +12,7 @@ int Hash(pii seeds, int n, int size){
 
 class bloom_filter{
 	int number_hashes;
-  bitset <1009> bits;
+	bitset <1009> bits;
 	vector<pii> hashes_seeds;
 
 	public:
