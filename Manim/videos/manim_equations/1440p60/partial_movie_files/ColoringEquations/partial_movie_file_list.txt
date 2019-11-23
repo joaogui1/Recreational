@@ -1,0 +1,2 @@
+file '/home/john/Documents/Programming/Recreational/Manim/videos/manim_equations/1440p60/partial_movie_files/ColoringEquations/00000.mp4'
+file '/home/john/Documents/Programming/Recreational/Manim/videos/manim_equations/1440p60/partial_movie_files/ColoringEquations/00001.mp4'
