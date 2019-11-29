@@ -1,9 +1,54 @@
 from manimlib.imports import *
 
+class Return(Scene):
+    def construct(self):
+        line_1 = TextMobject("The ", "return", " is the (exponentially )discounted average")
+        line_2 = TextMobject("of the future rewards")
+        
+        eq1 = TexMobject(r"G_t", r"= R_{t+1} + \gamma R_{t+2} + \dots")
+        eq2 = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
+        
+
+        line_1.to_edge(UP)
+        line_1[1].set_color(RED)
+        line_2.next_to(line_1, DOWN)
+
+        eq1.set_color_by_tex("G", RED)
+        eq2.set_color_by_tex("G", RED)       
+
+        self.play(FadeIn(line_1), FadeIn(line_2))
+        self.play(Write(eq1))
+        self.wait(3)
+        self.play(Transform(eq1, eq2))
+        self.wait(5)
+
+
+class Return(Scene):
+    def construct(self):
+        line_1 = TextMobject("The ", "return", " is the (exponentially )discounted average")
+        line_2 = TextMobject("of the future rewards")
+        
+        eq1 = TexMobject(r"G_t", r"= R_{t+1} + \gamma R_{t+2} + \dots")
+        eq2 = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
+        
+
+        line_1.to_edge(UP)
+        line_1[1].set_color(RED)
+        line_2.next_to(line_1, DOWN)
+
+        eq1.set_color_by_tex("G", RED)
+        eq2.set_color_by_tex("G", RED)       
+
+        self.play(FadeIn(line_1), FadeIn(line_2))
+        self.play(Write(eq1))
+        self.wait(3)
+        self.play(Transform(eq1, eq2))
+        self.wait(5)
+
 class StateValue(Scene):
     def construct(self):
         line_1 = TextMobject("The ", "state-value function", " is the")
-        line_2 = TextMobject("expected value of the ", "reward", " given a state under a policy")
+        line_2 = TextMobject("expected value of the ", "return", " given a state under a policy")
         eq1 = TexMobject(r"V_{\pi}(s)", r" = \mathbb{E}_{\pi}[", r"G_t", r"\vert S_t = s]")
         eqG = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
         eq2 = TexMobject(r"V_{\pi}(s)", r"= \mathbb{E}_{\pi} \Bigg[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \vert S_t = s \Bigg]")
@@ -29,7 +74,7 @@ class StateValue(Scene):
 class ActionValue(Scene):
     def construct(self):
         line_1 = TextMobject("The ", "action-value function", " is the")
-        line_2 = TextMobject("expected value of the ", "reward", " if you take action a in state s under a policy")
+        line_2 = TextMobject("expected value of the ", "return", " if you take action a in state s under a policy")
         eq1 = TexMobject(r"Q_{\pi}(s, a)", r" = \mathbb{E}_{\pi}[", r"G_t", r"\vert S_t = s, A_t = a]")
         eqG = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
         eq2 = TexMobject(r"Q_{\pi}(s, a)", r"= \mathbb{E}_{\pi} \Bigg[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \vert S_t = s, A_t = a \Bigg]")
@@ -92,4 +137,4 @@ class ActionState(Scene):
         self.wait(5)
         self.play(FadeOut(eq_text), FadeOut(braces))
         self.play(Transform(eq1, eqV), FadeIn(eqE), Transform(eq2, eqSum))
-        self.wait(3)
+        self.wait(5)
