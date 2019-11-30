@@ -1,25 +1,41 @@
 from manimlib.imports import *
 
-class Return(Scene):
+class Policy(Scene):
     def construct(self):
-        line_1 = TextMobject("The ", "return", " is the (exponentially )discounted average")
-        line_2 = TextMobject("of the future rewards")
+        line_1 = TextMobject("The ", "policy", " is the function that given the state")
+        line_2 = TextMobject("tells the agent what to do. It can be:")
+
+        def_1 = TextMobject("Deterministic")
+        def_2 = TextMobject("Probabilistic")
         
-        eq1 = TexMobject(r"G_t", r"= R_{t+1} + \gamma R_{t+2} + \dots")
-        eq2 = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
-        
+        eq1 = TexMobject(r"\pi(s)", r" = a")
+        eq2 = TexMobject(r"\pi(a \vert s)", r"= \mathbb{P}_\pi [A=a \vert S=s]")
+
+        eq1.set_color_by_tex("pi", RED)
+        eq2.set_color_by_tex("pi", RED)     
 
         line_1.to_edge(UP)
         line_1[1].set_color(RED)
         line_2.next_to(line_1, DOWN)
 
         eq1.set_color_by_tex("G", RED)
-        eq2.set_color_by_tex("G", RED)       
+        eq2.set_color_by_tex("G", RED) 
+        eq2.next_to(eq1, DOWN)  
+
+        for i, item in enumerate(eq1):
+            item.align_to(eq2[i], LEFT)    
+
+        def_1.next_to(eq1, LEFT)
+        def_2.next_to(eq2, LEFT)
+        def_2.align_to(def_1, LEFT)
+
 
         self.play(FadeIn(line_1), FadeIn(line_2))
+        self.play(FadeIn(def_1))
         self.play(Write(eq1))
         self.wait(3)
-        self.play(Transform(eq1, eq2))
+        self.play(FadeIn(def_2))
+        self.play(Write(eq2))
         self.wait(5)
 
 

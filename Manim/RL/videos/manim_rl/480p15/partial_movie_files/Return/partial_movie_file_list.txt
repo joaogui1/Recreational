@@ -1,5 +1,0 @@
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/480p15/partial_movie_files/Return/00000.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/480p15/partial_movie_files/Return/00001.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/480p15/partial_movie_files/Return/00002.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/480p15/partial_movie_files/Return/00003.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/480p15/partial_movie_files/Return/00004.mp4'
