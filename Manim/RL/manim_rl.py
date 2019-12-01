@@ -11,15 +11,14 @@ class Policy(Scene):
         eq1 = TexMobject(r"\pi(s)", r" = a")
         eq2 = TexMobject(r"\pi(a \vert s)", r"= \mathbb{P}_\pi [A=a \vert S=s]")
 
-        eq1.set_color_by_tex("pi", RED)
-        eq2.set_color_by_tex("pi", RED)     
 
         line_1.to_edge(UP)
         line_1[1].set_color(RED)
         line_2.next_to(line_1, DOWN)
 
-        eq1.set_color_by_tex("G", RED)
-        eq2.set_color_by_tex("G", RED) 
+        eq1.set_color_by_tex("pi", RED)
+        eq2.set_color_by_tex("pi", RED)
+        eq2.set_color_by_tex("P", WHITE)     
         eq2.next_to(eq1, DOWN)  
 
         for i, item in enumerate(eq1):
