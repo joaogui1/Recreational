@@ -2,6 +2,8 @@ from manimlib.imports import *
 
 class Policy(Scene):
     def construct(self):
+        title = Title("RL Policy @iugoaoj")
+
         line_1 = TextMobject("The ", "policy", " is the function that given the state")
         line_2 = TextMobject("tells the agent what to do. It can be:")
 
@@ -12,7 +14,7 @@ class Policy(Scene):
         eq2 = TexMobject(r"\pi(a \vert s)", r"= \mathbb{P}_\pi [A=a \vert S=s]")
 
 
-        line_1.to_edge(UP)
+        line_1.next_to(title, DOWN)
         line_1[1].set_color(RED)
         line_2.next_to(line_1, DOWN)
 
@@ -28,7 +30,7 @@ class Policy(Scene):
         def_2.next_to(eq2, LEFT)
         def_2.align_to(def_1, LEFT)
 
-
+        self.add(title)
         self.play(FadeIn(line_1), FadeIn(line_2))
         self.play(FadeIn(def_1))
         self.play(Write(eq1))
@@ -40,6 +42,8 @@ class Policy(Scene):
 
 class Return(Scene):
     def construct(self):
+        title = Title("RL Return @iugoaoj")
+
         line_1 = TextMobject("The ", "return", " is the (exponentially )discounted average")
         line_2 = TextMobject("of the future rewards")
         
@@ -47,13 +51,14 @@ class Return(Scene):
         eq2 = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
         
 
-        line_1.to_edge(UP)
+        line_1.next_to(title, DOWN)
         line_1[1].set_color(RED)
         line_2.next_to(line_1, DOWN)
 
         eq1.set_color_by_tex("G", RED)
         eq2.set_color_by_tex("G", RED)       
 
+        self.add(title)
         self.play(FadeIn(line_1), FadeIn(line_2))
         self.play(Write(eq1))
         self.wait(3)
@@ -62,13 +67,15 @@ class Return(Scene):
 
 class StateValue(Scene):
     def construct(self):
+        title = Title("RL State Value @iugoaoj")
+
         line_1 = TextMobject("The ", "state-value function", " is the")
         line_2 = TextMobject("expected value of the ", "return", " given a state under a policy")
         eq1 = TexMobject(r"V_{\pi}(s)", r" = \mathbb{E}_{\pi}[", r"G_t", r"\vert S_t = s]")
         eqG = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
         eq2 = TexMobject(r"V_{\pi}(s)", r"= \mathbb{E}_{\pi} \Bigg[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \vert S_t = s \Bigg]")
         
-        line_1.to_edge(UP)
+        line_1.next_to(title, DOWN)
         line_1[1].set_color(BLUE)
         line_2.next_to(line_1, DOWN)
         line_2[1].set_color(RED)
@@ -79,7 +86,8 @@ class StateValue(Scene):
         eq_group = VGroup(eq1, eqG)
         eq_group.arrange_submobjects(DOWN, buff=MED_LARGE_BUFF)
 
-        
+                
+        self.add(title)
         self.play(FadeIn(line_1), FadeIn(line_2))
         self.play(Write(eq_group))
         self.wait(3)
@@ -88,13 +96,15 @@ class StateValue(Scene):
 
 class ActionValue(Scene):
     def construct(self):
-        line_1 = TextMobject("The ", "action-value function", " is the")
-        line_2 = TextMobject("expected value of the ", "return", " if you take action a in state s under a policy")
+        title = Title("RL Action Value @iugoaoj")
+
+        line_1 = TextMobject("The ", "action-value function", " is the expected value of ")
+        line_2 = TextMobject("the ", "return", " if you take action a in state s under a policy")
         eq1 = TexMobject(r"Q_{\pi}(s, a)", r" = \mathbb{E}_{\pi}[", r"G_t", r"\vert S_t = s, A_t = a]")
         eqG = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
         eq2 = TexMobject(r"Q_{\pi}(s, a)", r"= \mathbb{E}_{\pi} \Bigg[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \vert S_t = s, A_t = a \Bigg]")
         
-        line_1.to_edge(UP)
+        line_1.next_to(title, DOWN)
         line_1[1].set_color(YELLOW)
         line_2.next_to(line_1, DOWN)
         line_2[1].set_color(RED)
@@ -105,7 +115,8 @@ class ActionValue(Scene):
         eq_group = VGroup(eq1, eqG)
         eq_group.arrange_submobjects(DOWN, buff=MED_LARGE_BUFF)
 
-        
+
+        self.add(title)
         self.play(FadeIn(line_1), FadeIn(line_2))
         self.play(Write(eq_group))
         self.wait(3)
@@ -114,12 +125,12 @@ class ActionValue(Scene):
 
 class ActionState(Scene):
     def construct(self):
+        title = Title("RL Action-State relation @iugoaoj")
         line_1 = TextMobject("We can use the probability distribution given by the policy")
         line_2 = TextMobject("to relate these two functions")
         
-        line_1.to_edge(UP)
+        line_1.next_to(title, DOWN)
         line_2.next_to(line_1, DOWN)
-
 
         eq1 = TexMobject(r"V_{\pi}(s) = \mathbb{E}_{\pi}[G_t \vert S_t = s]")
         eq2 = TexMobject(r"Q_{\pi}(s, a) = \mathbb{E}_{\pi}[G_t \vert S_t = s, A_t = a]")
@@ -145,6 +156,7 @@ class ActionState(Scene):
         braces = Brace(eq_group, LEFT)
         eq_text = braces.get_text("Value equations")
 
+        self.add(title)
         self.play(FadeIn(line_1), FadeIn(line_2))
         self.wait(3)
         self.play(Write(eq1),Write(eq2))
