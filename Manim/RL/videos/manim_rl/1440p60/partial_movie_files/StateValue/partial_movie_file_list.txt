@@ -1,5 +1,0 @@
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/StateValue/00000.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/StateValue/00001.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/StateValue/00002.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/StateValue/00003.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/StateValue/00004.mp4'

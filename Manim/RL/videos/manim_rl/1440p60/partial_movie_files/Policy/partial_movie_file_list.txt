@@ -1,7 +1,0 @@
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/Policy/00000.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/Policy/00001.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/Policy/00002.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/Policy/00003.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/Policy/00004.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/Policy/00005.mp4'
-file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_rl/1440p60/partial_movie_files/Policy/00006.mp4'
