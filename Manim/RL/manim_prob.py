@@ -51,10 +51,6 @@ class Marginalization(Scene):
 
         line_6.next_to(title, DOWN)
 
-
-        # for i, item in enumerate(eq1):
-        #     item.align_to(eq2[i], LEFT)    
-
         self.add(title)
         self.play(FadeIn(line_1))
         self.play(Write(eq1))
@@ -80,14 +76,14 @@ class Marginalization(Scene):
 
         self.remove(line_4)
         self.play(Write(line_5))
+        self.remove(eq_group)
         self.play(Transform(eq4, eq5))
         self.wait(6)
         
-        self.remove(eq_group)
         self.remove(line_5)
         self.play(Write(line_6))
-        self.play(Transform(eq5, eq6))
         self.remove(eq4)
+        self.play(Transform(eq5, eq6))
         self.wait(6)
 
 
@@ -159,7 +155,9 @@ class ActionState(Scene):
         line_2.next_to(line_1, DOWN)
 
         eq1 = TexMobject(r"V_{\pi}(s) = \mathbb{E}_{\pi}[G_t \vert S_t = s]")
-        eq2 = TexMobject(r"Q_{\pi}(s, a) = \mathbb{E}_{\pi}[G_t \vert S_t = s, A_t = a]")
+        eq2 = TexMobject(r"V_{\pi}(s) = \sum_{a \in \mathcal{A}} p_{A_t}(a) \cdot \mathbb{E}_{\pi}[G_t \vert S_t = s, A_t = a]")
+        eq3 = TexMobject(r"V_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a \vert s) \cdot \mathbb{E}_{\pi}[G_t \vert S_t = s, A_t = a]")
+        eqQ = TexMobject(r"Q_{\pi}(s, a) = \mathbb{E}_{\pi}[G_t \vert S_t = s, A_t = a]")
         eqV = TexMobject(r"V_{\pi}(s)")
         eqE = TexMobject(r"=")
         eqSum = TexMobject(r"\sum_{a \in \mathcal{A}}", r"Q_{\pi}(s, a)",  r"\pi(a \vert s)")
