@@ -1,3 +1,6 @@
 file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_markov/480p15/partial_movie_files/MRP/00000.mp4'
 file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_markov/480p15/partial_movie_files/MRP/00001.mp4'
 file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_markov/480p15/partial_movie_files/MRP/00002.mp4'
+file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_markov/480p15/partial_movie_files/MRP/00003.mp4'
+file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_markov/480p15/partial_movie_files/MRP/00004.mp4'
+file '/home/john/Documents/Programming/Recreational/Manim/RL/videos/manim_markov/480p15/partial_movie_files/MRP/00005.mp4'

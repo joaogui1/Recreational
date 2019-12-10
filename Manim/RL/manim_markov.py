@@ -51,36 +51,50 @@ class MRP(Scene):
         title = Title("Markov Reward Process @iugoaoj")
 
         mp1 = TextMobject(r"A Markov Reward Process is a tuple (S, P, R, $\gamma$)")
-        mp2 = TextMobject("where S is a sequence of states with the",  "Markov Property")
-        mp3 = TextMobject("and P is a", "transition probability matrix")
+        mp2 = TextMobject("where S and P are defined as in Markov Processes,")
+        mp3 = TextMobject("R is a", "reward function", r"and $\gamma$", "is a discount factor")
         mp = VGroup(mp1, mp2, mp3)
         mp.arrange_submobjects(DOWN, buff=MED_LARGE_BUFF)
         mp.next_to(title, DOWN)
-        mp2.set_color_by_tex("Markov", YELLOW)
-        mp3.set_color_by_tex("transition", RED)
+        mp3.set_color_by_tex("reward", YELLOW)
+        mp3.set_color_by_tex("discount", RED)
 
-        mprop = TextMobject("A sequence of states is Markov if")
-        mtext = TextMobject("The ", "future", " is independent of the ", "past", "given the",  "present")
-        mtext.set_color_by_tex("future", YELLOW)
-        mtext.set_color_by_tex("past", BLUE)
-        mtext.set_color_by_tex("present", RED)
-        mEq = TexMobject(r"P[", r"S_{t + 1}", r"\vert S_{t}", r"]= P[", r"S_{t + 1}", r"\vert S_1, S_2, \dots, ",  r"S_{t}", "]") 
-        mEq.set_color_by_tex("S_{t + 1}", YELLOW, substring=False)
-        mEq.set_color_by_tex("S_1", BLUE)
-        mEq.set_color_by_tex("S_{t}", RED)
 
-        mprop.next_to(title, DOWN)
-        mtext.to_corner(DOWN)
+        rewardtext = TextMobject("A reward function gives the expected immediate reward")
+        rewardtext.next_to(title, DOWN)
+        rewardeq = TexMobject(r"R(s) = \mathbb E[R_{t + 1} \vert S_t = s]")
 
-        transtext = TextMobject("A transition probability matrix is a matrix with the entries:")
-        transtext.next_to(title, DOWN)
-        transEq = TexMobject(r"P_{i, j} = P[S_{t + 1} = S_j \vert S_t = S_i]")
+
+        discounttext = TextMobject()
+        returnEq1 = TexMobject(r"G_t", r"= R_{t+1} + \gamma R_{t+2} + \dots")
+        returnEq2 = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
+
+
+        valText = TextMobject()
+        valEq = TexMobject()
+
+        # mprop = TextMobject("A sequence of states is Markov if")
+        # mtext = TextMobject("The ", "future", " is independent of the ", "past", "given the",  "present")
+        # mtext.set_color_by_tex("future", YELLOW)
+        # mtext.set_color_by_tex("past", BLUE)
+        # mtext.set_color_by_tex("present", RED)
+        # mEq = TexMobject(r"P[", r"S_{t + 1}", r"\vert S_{t}", r"]= P[", r"S_{t + 1}", r"\vert S_1, S_2, \dots, ",  r"S_{t}", "]") 
+        # mEq.set_color_by_tex("S_{t + 1}", YELLOW, substring=False)
+        # mEq.set_color_by_tex("S_1", BLUE)
+        # mEq.set_color_by_tex("S_{t}", RED)
+
+        # mprop.next_to(title, DOWN)
+        # mtext.to_corner(DOWN)
+
+        # transtext = TextMobject("A transition probability matrix is a matrix with the entries:")
+        # transtext.next_to(title, DOWN)
+        # transEq = TexMobject(r"P_{i, j} = P[S_{t + 1} = S_j \vert S_t = S_i]")
 
         # line_1 = TextMobject("The ", "return", " is the (exponentially )discounted average")
         # line_2 = TextMobject("of the future rewards")
         
-        # eq1 = TexMobject(r"G_t", r"= R_{t+1} + \gamma R_{t+2} + \dots")
-        # eq2 = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
+        # eq1 = TexMobject()
+        # eq2 = 
         
 
         # line_1.next_to(title, DOWN)
@@ -93,17 +107,48 @@ class MRP(Scene):
         self.add(title)
         self.play(Write(mp))
         self.wait(5)
-        self.play(FadeOut(mp1), FadeOut(mp3))
-        self.play(Transform(mp2, mprop))
-        self.play(Write(mEq))
-        self.play(FadeIn(mtext))
-        self.wait(5)
-        self.remove(mp2)
-        self.play(FadeOut(mEq))
-        self.play(FadeOut(mtext))
-        self.play(Write(transtext))
-        self.play(Write(transEq))
+        self.play(FadeOut(mp))
+        self.play(Write(rewardtext))
+        self.play(Write(rewardeq))
+        # self.play(Transform(mp2, mprop))
+        # self.play(Write(mEq))
+        # self.play(FadeIn(mtext))
+        # self.wait(5)
+        # self.remove(mp2)
+        # self.play(FadeOut(mEq))
+        # self.play(FadeOut(mtext))
+        # self.play(Write(transtext))
+        # self.play(Write(transEq))
         self.wait(6)
+
+class BellmanMRP(Scene):
+    def construct(self):
+        title = Title("RL Action Value @iugoaoj")
+
+        line_1 = TextMobject("The ", "action-value function", " is the expected value of ")
+        line_2 = TextMobject("the ", "return", " if you take action a in state s under a policy")
+        eq1 = TexMobject(r"Q_{\pi}(s, a)", r" = \mathbb{E}_{\pi}[", r"G_t", r"\vert S_t = s, A_t = a]")
+        eqG = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
+        eq2 = TexMobject(r"Q_{\pi}(s, a)", r"= \mathbb{E}_{\pi} \Bigg[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \vert S_t = s, A_t = a \Bigg]")
+        
+        line_1.next_to(title, DOWN)
+        line_1[1].set_color(YELLOW)
+        line_2.next_to(line_1, DOWN)
+        line_2[1].set_color(RED)
+
+        eq1.set_color_by_tex("Q", YELLOW)
+        eqG.set_color_by_tex("G", RED)
+        eq2.set_color_by_tex("Q", YELLOW)
+        eq_group = VGroup(eq1, eqG)
+        eq_group.arrange_submobjects(DOWN, buff=MED_LARGE_BUFF)
+
+
+        self.add(title)
+        self.play(FadeIn(line_1), FadeIn(line_2))
+        self.play(Write(eq_group))
+        self.wait(3)
+        self.play(Transform(eq_group, eq2))
+        self.wait(5)
 
 class MDP(Scene):
     def construct(self):
@@ -134,34 +179,6 @@ class MDP(Scene):
         self.play(Transform(eq_group, eq2))
         self.wait(5)
 
-class ActionValue(Scene):
-    def construct(self):
-        title = Title("RL Action Value @iugoaoj")
-
-        line_1 = TextMobject("The ", "action-value function", " is the expected value of ")
-        line_2 = TextMobject("the ", "return", " if you take action a in state s under a policy")
-        eq1 = TexMobject(r"Q_{\pi}(s, a)", r" = \mathbb{E}_{\pi}[", r"G_t", r"\vert S_t = s, A_t = a]")
-        eqG = TexMobject(r"G_t", r"= \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}")
-        eq2 = TexMobject(r"Q_{\pi}(s, a)", r"= \mathbb{E}_{\pi} \Bigg[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \vert S_t = s, A_t = a \Bigg]")
-        
-        line_1.next_to(title, DOWN)
-        line_1[1].set_color(YELLOW)
-        line_2.next_to(line_1, DOWN)
-        line_2[1].set_color(RED)
-
-        eq1.set_color_by_tex("Q", YELLOW)
-        eqG.set_color_by_tex("G", RED)
-        eq2.set_color_by_tex("Q", YELLOW)
-        eq_group = VGroup(eq1, eqG)
-        eq_group.arrange_submobjects(DOWN, buff=MED_LARGE_BUFF)
-
-
-        self.add(title)
-        self.play(FadeIn(line_1), FadeIn(line_2))
-        self.play(Write(eq_group))
-        self.wait(3)
-        self.play(Transform(eq_group, eq2))
-        self.wait(5)
 
 class ActionState(Scene):
     def construct(self):
