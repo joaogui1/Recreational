@@ -97,7 +97,7 @@ class ActionState(Scene):
         line_2.next_to(line_1, DOWN)
 
         eq1 = TexMobject(r"V_{\pi}(s) = \mathbb{E}_{\pi}[G_t \vert S_t = s]")
-        eq2 = TexMobject(r"V_{\pi}(s) = \sum_{a \in \mathcal{A}} p_{A_t}(a) \cdot \mathbb{E}_{\pi}[G_t \vert S_t = s, A_t = a]")
+        eq2 = TexMobject(r"V_{\pi}(s) = \sum_{a \in \mathcal{A}} p_{A_t \vert S_t}(a \vert s) \cdot \mathbb{E}_{\pi}[G_t \vert S_t = s, A_t = a]")
         eq3 = TexMobject(r"V_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a \vert s) \cdot \mathbb{E}_{\pi}[G_t \vert S_t = s, A_t = a]")
         eq4 = TexMobject(r"V_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a \vert s) \cdot Q_{\pi}(s, a)")
         eq5 = TexMobject(r"V_{\pi}(s) = \sum_{a \in \mathcal{A}} Q_{\pi}(s, a) \pi(a \vert s)")
