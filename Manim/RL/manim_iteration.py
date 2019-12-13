@@ -168,7 +168,7 @@ class ValueIt(Scene):
         title = Title("Value Iteration @iugoaoj")
 
         intro_text1 = TextMobject("Another algorithm coming from the idea of applying")
-        intro_text2 = TextMobject("dynamic programming tp Bellman Equations is Value Iteration")
+        intro_text2 = TextMobject("dynamic programming to Bellman Equations is Value Iteration")
         intro_text = VGroup(intro_text1, intro_text2)
         intro_text.arrange_submobjects(DOWN)
         intro_text.next_to(title, DOWN)
@@ -190,14 +190,8 @@ class ValueIt(Scene):
         improv_text2.next_to(title, DOWN)
         improv_eq2 = TexMobject(r"\bold{V}_{t + 1} = \max_{a \in \mathcal{A}} \bold{R}(a) + \gamma \bold{P}^a \bold{V}_{t}")
        
-
-        equi_text1 = TextMobject("What happens once the state-value stops improving (converges)?")
-        equi_text1.next_to(title, DOWN)
-        equi_eq1 = TexMobject(r"Q_{\pi}(s, \pi'(s)) = \max_{a \in \mathcal{A}} Q_{\pi}(s, a) = V_{\pi}(s)")
-
-        equi_text2 = TextMobject(r"But that's Bellman Optimality Equation, and so $\pi$ is optimal")
-        equi_text2.next_to(title, DOWN)
-        equi_eq2 = TexMobject(r"V_{pi}(s) = \max_{a \in \mathcal{A}} Q_{\pi}(s, a)")
+        opt_text = TextMobject("And it's optimal by the same argument as above")
+        opt_text.next_to(title, DOWN)
         
         self.add(title)
         self.play(Write(intro_text))
@@ -211,14 +205,9 @@ class ValueIt(Scene):
         self.play(FadeOut(alg_text1), FadeOut(alg_text2))
         self.play(Write(improv_text1))
         self.play(Write(improv_eq1))
-        self.wait(4)
-        self.play(Transform(improv_text, improv_text2))
+        self.wait(5)
+        self.play(Transform(improv_text1, improv_text2))
         self.play(Transform(improv_eq1, improv_eq2))
+        self.wait(3)
+        self.play(Transform(improv_text1, opt_text))
         self.wait(4)
-
-        # self.play(FadeOut(improv_text), FadeOut(improv_eq))
-        # self.play(Write(equi_text))
-        # self.play(Write(equi_eq1))
-        # self.wait(4)
-        # self.play(Transform(equi_eq1, equi_eq2))
-        # self.wait(6)
