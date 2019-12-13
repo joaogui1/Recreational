@@ -87,8 +87,7 @@ class PolicyIt(Scene):
         intro_text.arrange_submobjects(DOWN)
         intro_text.next_to(title, DOWN)
 
-
-        alg_text1 = TextMobject("The algorithm is defined in 3 parts:")
+        alg_text1 = TextMobject("One way to do this is through Policy Iteration:")
         alg_text2_1 = TextMobject("1. Compute the state-value of our policy", "(Policy evaluation)")
         alg_text2_2 = TextMobject("2. Generate a greedy function based on V", "(Policy  improvement)")
         alg_text2_3 = TextMobject("3. If the policy hasn't converged, go back to 1", "(Policy iteration)")
@@ -102,55 +101,29 @@ class PolicyIt(Scene):
         alg_text2.arrange_submobjects(DOWN)
         alg_text2.scale(0.8)
 
-
         eval_text = TextMobject("To evaluate a policy we use Bellman Expectation Equation")
         eval_text.next_to(title, DOWN)
         eval_eq = TexMobject(r"V_{t + 1}(s) = \sum_a \pi(a \vert s) \sum_{s', r} P(s', r \vert s, a) (r + \gamma V_t(s'))")
 
-
-        q_Text = TextMobject("For the action value equation we can begin from it's definition")
-        q_Text.next_to(title, DOWN)
-        eqQ2 = TexMobject(r"Q_{\pi}(s, a) = \mathbb{E}_{\pi}\Bigg[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} \vert S_t = s, A_t = a\Bigg]")
+        improv_text = TextMobject("To get a better policy from V we take the greedy policy")
+        improv_text.next_to(title, DOWN)
+        improv_eq = TexMobject(r"\pi'(s) = \arg\max_{a \in \mathcal{A}} Q_{\pi}(s, a)")
+        improv_eq2 = TexMobject(r"\pi'(s) = \arg\max_{a \in \mathcal{A}} R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a V_{t + 1} (s')")
+       
+        iter_text = TextMobject(r"Why is $\pi'$ better than $\pi$?")
+        iter_text.next_to(title, DOWN)
+        iter_eq1 = TexMobject(r"\pi'(s) = \arg\max_{a \in \mathcal{A}} Q_{\pi}(s, a)")
+        iter_eq2 = TexMobject(r"Q_{\pi}(s, \pi'(s)) = \max_{a \in \mathcal{A}} \geq Q_{\pi}(s, \pi(s)) = V_{pi}(s)")
         
-        exp_Text = TextMobject("And then extract the first term")
-        exp_Text.next_to(title, DOWN)
-        eqQ_exp1 = TexMobject(r"Q_{\pi}(s, a) = \mathbb{E}_{\pi}\Big[R_{t+1} + \sum_{k=1}^{\infty} \gamma^k R_{t+k+1} \vert S_t = s, A_t = a \Big]")
-        eqQ_exp2 = TexMobject(r"Q_{\pi}(s, a) = \mathbb{E}_{\pi}\Big[R_{t+1} + \gamma \sum_{k=0}^{\infty} \gamma^k R_{t+k+2} \vert S_t = s, A_t = a \Big]")
 
-        ext_Text = TextMobject("This is the immediate reward plus the return of the next state")
-        ext_Text.next_to(title, DOWN)
-        eqq = TexMobject(r"Q_{\pi}(s, a) =")
-        eqR = TexMobject(r"\mathbb{E}_{\pi}[R_{t+1}\vert S_t = s, A_t = a]")
-        eqPlus = TexMobject(" + ")
-        eqG = TexMobject(r"\gamma \mathbb{E}_{\pi}[G_{t + 1} \vert S_t = s, A_t = a]")
+        equi_text1 = TextMobject("What happens once the state-value stops improving (converges)?")
+        equi_text1.next_to(title, DOWN)
+        equi_eq1 = TexMobject(r"Q_{\pi}(s, \pi'(s)) = \max_{a \in \mathcal{A}} Q_{\pi}(s, a) = V_{\pi}(s)")
 
-        eq_ext = VGroup(eqq, eqR, eqPlus, eqG)
-        eq_ext.arrange_submobjects()
-
-        bracesr = Brace(eqR)
-        bracesg = Brace(eqG)
-        r_text = bracesr.get_text(r"$R(s, a)$")
-        g_text = bracesg.get_text("Average value over the next state")
-        g_text.scale(0.7)
-
-        eqQV = TexMobject(r"Q_{\pi}(s, a) = R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a V_{\pi} (s')")
-      
-        rec_Text = TextMobject("Now we can relate the value functions from two perspectives")
-        rec_Text.next_to(title, DOWN)
-
-        bell_Text1 = TextMobject("Plugging one equation into the other we get")
-        bell_Text2 = TextMobject("Bellman's Expectation Equations")
-        bell_Text = VGroup(bell_Text1, bell_Text2)
-        bell_Text.arrange_submobjects(DOWN,  buff=MED_LARGE_BUFF)
-        bell_Text.next_to(title, DOWN)
-
-        bellEqV = TexMobject(r"V_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a \vert s) \big( R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a V_{\pi} (s') \big)")
-        bellEqQ = TexMobject(r"Q_{\pi}(s, a) = R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' \vert s') Q_{\pi} (s', a')")
-        bellEqV.next_to(bellEqQ, DOWN)
-
-        final_text = TextMobject("That defines recursively both $Q$ and $V$")
-        final_text.next_to(title, DOWN)
-
+        equi_text2 = TextMobject(r"But that's Bellman Optimality Equation, and so $\pi$ is optimal")
+        equi_text2.next_to(title, DOWN)
+        equi_eq2 = TexMobject(r"V_{\pi}(s) = \max_{a \in \mathcal{A}} Q_{\pi}(s, a)")
+        
         self.add(title)
         self.play(Write(intro_text))
         self.wait(5)
@@ -163,115 +136,89 @@ class PolicyIt(Scene):
         self.play(FadeOut(alg_text1), FadeOut(alg_text2))
         self.play(Write(eval_text))
         self.play(Write(eval_eq))
+        self.wait(5)
 
+        self.play(FadeOut(eval_text), FadeOut(eval_eq))
+        self.play(Write(improv_text))
+        self.play(Write(improv_eq))
+        self.wait(4)
+        self.play(Transform(improv_eq, improv_eq2))
+        self.wait(5)
 
-        # self.play(FadeOut(q_Text))
-        # self.play(Write(exp_Text))
-        # self.play(Transform(eqQ, eqQ_exp1))
-        # self.wait(3)
-        # self.play(Transform(eqQ, eqQ_exp2))
-        # self.wait(3)
-
-
-        # self.play(FadeOut(exp_Text))
-        # self.play(Write(ext_Text))
-        # self.wait(1.5)
-        # self.play(Transform(eqQ, eq_ext))
-        # self.wait(2)
-        # self.play(GrowFromCenter(bracesr), Write(r_text))
-        # self.wait(2)
-        # self.play(GrowFromCenter(bracesg), Write(g_text))
-        # self.wait(4)
-        
-        # eqVQ.next_to(eqQV, DOWN)
-        # self.play(FadeOut(bracesg), FadeOut(bracesr))
-        # self.play(FadeOut(g_text), FadeOut(r_text))
-        # self.play(Transform(eqQ, eqQV))
-        # self.wait(2.5)
-      
-        # self.play(FadeOut(ext_Text))
-        # self.play(Write(rec_Text))
-        # self.play(Write(eqVQ))
-        # self.wait(4)
-
-        # self.play(FadeOut(rec_Text))
-        # self.play(Write(bell_Text))
-        # self.play(Transform(eqQ, bellEqQ), Transform(eqVQ, bellEqV))
-        # self.wait(3)
-        # self.play(FadeOut(bell_Text))
-        # self.play(Write(final_text))
-
+        self.play(FadeOut(improv_text), FadeOut(improv_eq))
+        self.play(Write(iter_text))
+        self.play(Write(iter_eq1))
+        self.wait(4)
+        self.play(Transform(iter_eq1, iter_eq2))
         self.wait(4)
 
-
-class BellOpt(Scene):
-    def construct(self):
-        title = Title("Bellman Optimality Equations @iugoaoj")
-
-        deftext = TextMobject("Let's define the optimal value functions")
-        deftext.next_to(title, DOWN)
-        eqV = TexMobject(r"V_{*}(s) = \max_{\pi} V_{\pi}(s)")
-        eqQ = TexMobject(r"Q_{*}(s, a) = \max_{\pi} Q_{\pi}(s, a)")
-        eqGroup = VGroup(eqV, eqQ)
-        eqGroup.arrange_submobjects(DOWN, buff=MED_LARGE_BUFF)
-
-        exptext = TextMobject("They give us the maximal amount of expected reward")
-        exptext.next_to(title, DOWN)
-
-        optpoltext = TextMobject("But how do you get this maximal reward? By following an optimal policy!")
-        optpoltext.next_to(title, DOWN)
-        optpoltext.scale(0.8)
-        eqpi1 = TexMobject(r"\pi_{*} = \arg\max_{\pi} V_{\pi}(s)")
-        eqpi2 = TexMobject(r"\pi_{*} = \arg\max_{\pi} Q_{\pi}(s, a)")
-        eqpi = VGroup(eqpi1, eqpi2)
-        eqpi.arrange_submobjects(DOWN)
-
-        rectext1 = TextMobject("Using the definitions of the optimal value functions and an")
-        rectext2 = TextMobject("analogous reasoning we can obtain relationships between them")
-        rectext = VGroup(rectext1, rectext2)
-        rectext.arrange_submobjects(DOWN)
-        rectext.next_to(title, DOWN)
-
-        receq1 = TexMobject(r"V_*(s) = \max_{a \in \mathcal{A}} Q_*(s,a)")
-        receq2 = TexMobject(r"Q_*(s, a) = R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a V_*(s')")
-        receq = VGroup(receq1, receq2)
-        receq.arrange_submobjects(DOWN)
-        receq.move_to(DOWN)
-
-        bell_Text1 = TextMobject("Plugging one equation into the other we get")
-        bell_Text2 = TextMobject("Bellman's Optimality Equations")
-        bell_Text = VGroup(bell_Text1, bell_Text2)
-        bell_Text.arrange_submobjects(DOWN)
-        bell_Text.next_to(title, DOWN)
-
-        bellEqV = TexMobject(r"V_*(s) = \max_{a \in \mathcal{A}} \big( R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a V_*(s') \big)")
-        bellEqQ = TexMobject(r"Q_*(s, a) = R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a \max_{a' \in \mathcal{A}} Q_*(s', a')")
-        bellEqG = VGroup(bellEqV, bellEqQ)
-        bellEqG.arrange_submobjects(DOWN)
-        bellEqG.move_to(DOWN)
-
-        self.add(title)
-        self.play(Write(deftext))
-        self.play(Write(eqGroup))
-        self.wait(5)
-
-        self.play(FadeOut(deftext))
-        self.play(Write(exptext))
+        self.play(FadeOut(iter_text), FadeOut(iter_eq1))
+        self.play(Write(equi_text1))
+        self.play(Write(equi_eq1))
+        self.wait(4)
+        self.play(Transform(equi_eq1, equi_eq2))
+        self.wait(3)
+        self.play(Transform(equi_text1, equi_text2))
         self.wait(3)
 
-        self.play(FadeOut(exptext))
-        self.play(Write(optpoltext))
-        self.play(Transform(eqGroup, eqpi))
+
+
+class ValueIt(Scene):
+   def construct(self):
+        title = Title("Value Iteration @iugoaoj")
+
+        intro_text1 = TextMobject("Another algorithm coming from the idea of applying")
+        intro_text2 = TextMobject("dynamic programming tp Bellman Equations is Value Iteration")
+        intro_text = VGroup(intro_text1, intro_text2)
+        intro_text.arrange_submobjects(DOWN)
+        intro_text.next_to(title, DOWN)
+
+        alg_text1 = TextMobject("The algorithm is defined in 2 parts:")
+        alg_text2_1 = TextMobject(r"1. For all states $s$, use BOE to update V")
+        alg_text2_2 = TextMobject("2. If the state-value hasn't converged, go back to 1")
+        
+        alg_text2 = VGroup(alg_text2_1, alg_text2_2)
+        alg_text1.next_to(title, DOWN)
+        alg_text2.arrange_submobjects(DOWN)
+        alg_text2.scale(0.8)
+
+        improv_text1 = TextMobject("More specifically we do:")
+        improv_text1.next_to(title, DOWN)
+        improv_eq1 = TexMobject(r"V_{t + 1}(s) = \max_{a \in \mathcal{A}} R(s, a) + \gamma \sum_{s' \in \mathcal{S}} P_{ss'}^a V_{t} (s')")
+
+        improv_text2 = TextMobject("Or in matrix form:")
+        improv_text2.next_to(title, DOWN)
+        improv_eq2 = TexMobject(r"\bold{V}_{t + 1} = \max_{a \in \mathcal{A}} \bold{R}(a) + \gamma \bold{P}^a \bold{V}_{t}")
+       
+
+        equi_text1 = TextMobject("What happens once the state-value stops improving (converges)?")
+        equi_text1.next_to(title, DOWN)
+        equi_eq1 = TexMobject(r"Q_{\pi}(s, \pi'(s)) = \max_{a \in \mathcal{A}} Q_{\pi}(s, a) = V_{\pi}(s)")
+
+        equi_text2 = TextMobject(r"But that's Bellman Optimality Equation, and so $\pi$ is optimal")
+        equi_text2.next_to(title, DOWN)
+        equi_eq2 = TexMobject(r"V_{pi}(s) = \max_{a \in \mathcal{A}} Q_{\pi}(s, a)")
+        
+        self.add(title)
+        self.play(Write(intro_text))
         self.wait(5)
 
-        self.play(FadeOut(optpoltext), FadeOut(eqGroup))
-        self.play(Write(rectext))
-        self.play(Write(receq))
+        self.play(FadeOut(intro_text))
+        self.play(Write(alg_text1))
+        self.play(Write(alg_text2))
         self.wait(5)
 
-        self.play(FadeOut(rectext))
-        self.play(Write(bell_Text))
-        self.play(Transform(receq, bellEqG))
-        self.wait(5)
+        self.play(FadeOut(alg_text1), FadeOut(alg_text2))
+        self.play(Write(improv_text1))
+        self.play(Write(improv_eq1))
+        self.wait(4)
+        self.play(Transform(improv_text, improv_text2))
+        self.play(Transform(improv_eq1, improv_eq2))
+        self.wait(4)
 
-      
+        # self.play(FadeOut(improv_text), FadeOut(improv_eq))
+        # self.play(Write(equi_text))
+        # self.play(Write(equi_eq1))
+        # self.wait(4)
+        # self.play(Transform(equi_eq1, equi_eq2))
+        # self.wait(6)
