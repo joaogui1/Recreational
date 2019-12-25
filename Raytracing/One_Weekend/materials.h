@@ -3,6 +3,7 @@
 
 #include "ray.h"
 #include "sphere.h"
+#include "random.h"
 #include "hittable.h"
 
 class material{
@@ -49,6 +50,12 @@ public:
   float fuzz;
 };
 
+float schlick(float cosine, float ref_idx){
+  float r0 = (1 - ref_idx) / (1 + ref_idx);
+  r0 = r0 * r0;
+  return r0 + (1 - r0) * pow((1 - cosine), 5);
+}
+
 bool refract(const vec3 &v, const vec3 &n, float ni_over_nt, vec3 &refracted){
   vec3 uv = unit_vector(v);
   float dt = dot(uv, n);
@@ -72,21 +79,32 @@ public:
     attenuation = vec3(1.0, 1.0, 1.0);
     vec3 refracted;
 
+    float reflect_prob;
+    float cosine;
+
     if (dot(r_in.direction(), rec.normal) > 0){
       outward_normal = -rec.normal;
       ni_over_nt = ref_idx;
+      cosine = ref_idx * dot(r_in.direction(), rec.normal) / r_in.direction().length();
     }
     else{
       outward_normal = rec.normal;
       ni_over_nt = 1.0 / ref_idx;
+      cosine = -dot(r_in.direction(), rec.normal) / r_in.direction().length();
     }
 
     if (refract(r_in.direction(), outward_normal, ni_over_nt, refracted)){
-      scattered = ray(rec.p, refracted);
+      reflect_prob = schlick(cosine, ref_idx);
     }
     else{
+      reflect_prob = 1.0;
+    }
+
+    if (random_double() < reflect_prob){
       scattered = ray(rec.p, reflected);
-      return false;
+    }
+    else{
+      scattered = ray(rec.p, refracted);
     }
 
     return true;

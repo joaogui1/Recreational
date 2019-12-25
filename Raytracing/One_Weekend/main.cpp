@@ -27,7 +27,7 @@ vec3 color(const ray &r, hittable *world, int depth){
 }
 
 int main(){
-  int nx = 200, ny = 100, ns = 100;
+  int nx = 400, ny = 200, ns = 100;
   cout << "P3\n" << nx << " " << ny << "\n255\n";
   
   hittable *list[4];
