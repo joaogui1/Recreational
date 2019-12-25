@@ -12,8 +12,8 @@ run:
 > eog ex.ppm
 
 clean:
-> rm ex.ppm
-> rm 1
+> rm -f ex.ppm
+> rm -f 1
 
 git:
 > @read -p "Message: " msg;
