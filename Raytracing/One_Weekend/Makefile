@@ -3,17 +3,20 @@ ifeq ($(origin .RECIPEPREFIX), undefined)
 endif
 .RECIPEPREFIX = >
 
-clean:
-> rm ex.ppm
-> rm 1
+all: clean run
 
-run: clean
+
+run:
 > g++ main.cpp -o 1
 > ./1 >> ex.ppm
 > eog ex.ppm
 
+clean:
+> rm ex.ppm
+> rm 1
+
 git:
-> @read -p "Message:" msg;
+> @read -p "Message: " msg;
 > git add -A
 > git commit -m msg
 
