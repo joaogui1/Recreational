@@ -1,5 +1,3 @@
-# for f in `ls *.md`; do \n\n\n\tpandoc -f markdown -t org -o ${f}.org ${f};\ndone
-
 import os, subprocess
 import tempfile
 
@@ -10,7 +8,7 @@ def name_to_id(s):
 
 def props(s):
 	s = name_to_id(s)
-	return f':PROPERTIES:\n:CUSTOM_ID:{s}\n:END:'
+	return f':PROPERTIES:\n:CUSTOM_ID:{s}\n:END:\n'
 
 def fix_link(line):
 	link_pos = line.find("[[")
@@ -41,7 +39,7 @@ with os.scandir(path) as it:
 		print(filename)
 		subprocess.run(['pandoc', '-f', 'markdown', '-t', 'org', '-o', f'{filename[:-3]}.org', f'{filename}'])
 		filename = filename.replace('.md', '.org')
-		page_name = filename[2:-3]
+		page_name = filename[2:-4]
 		section_name = ''
 		with tempfile.NamedTemporaryFile('w', delete=False) as outfile:
 			outfile.write(props(page_name)) #Keep links to file working
