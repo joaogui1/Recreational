@@ -1,0 +1,31 @@
+ERROR: LoadError: failed process: Process(`/home/joaogui/.julia/artifacts/7f40eeb66d90d3026ae5fb68761c263b57adb840/bin/ffmpeg -loglevel panic -framerate 30 -i /tmp/jl_lW4x1K/%10d.png -i /tmp/jl_lW4x1K/palette.bmp -lavfi paletteuse=dither=sierra2_4a -y round2.gif`, ProcessExited(1)) [1]
+
+Stacktrace:
+ [1] pipeline_error at ./process.jl:525 [inlined]
+ [2] run(::Cmd; wait::Bool) at ./process.jl:440
+ [3] run at ./process.jl:438 [inlined]
+ [4] #4 at /home/joaogui/.julia/packages/FFMPEG/aazvf/src/FFMPEG.jl:114 [inlined]
+ [5] #2 at /home/joaogui/.julia/packages/JLLWrappers/KuIwt/src/runtime.jl:49 [inlined]
+ [6] withenv(::JLLWrappers.var"#2#3"{FFMPEG.var"#4#6"{Cmd},String}, ::Pair{String,String}, ::Vararg{Pair{String,String},N} where N) at ./env.jl:161
+ [7] withenv_executable_wrapper(::FFMPEG.var"#4#6"{Cmd}, ::String, ::String, ::String, ::Bool, ::Bool) at /home/joaogui/.julia/packages/JLLWrappers/KuIwt/src/runtime.jl:48
+ [8] #invokelatest#1 at ./essentials.jl:710 [inlined]
+ [9] invokelatest at ./essentials.jl:709 [inlined]
+ [10] #ffmpeg#7 at /home/joaogui/.julia/packages/JLLWrappers/KuIwt/src/products/executable_generators.jl:7 [inlined]
+ [11] ffmpeg at /home/joaogui/.julia/packages/JLLWrappers/KuIwt/src/products/executable_generators.jl:7 [inlined]
+ [12] #exe#2 at /home/joaogui/.julia/packages/FFMPEG/aazvf/src/FFMPEG.jl:113 [inlined]
+ [13] ffmpeg_exe at /home/joaogui/.julia/packages/FFMPEG/aazvf/src/FFMPEG.jl:125 [inlined]
+ [14] render(::Video; framerate::Int64, pathname::String, liveview::Bool, tempdirectory::String) at /home/joaogui/.julia/packages/Javis/rriwQ/src/Javis.jl:238
+ [15] top-level scope at /home/joaogui/javis_tutorials/tutorual1.jl:45
+ [16] include_string(::Function, ::Module, ::String, ::String) at ./loading.jl:1091
+ [17] invokelatest(::Any, ::Any, ::Vararg{Any,N} where N; kwargs::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at ./essentials.jl:710
+ [18] invokelatest(::Any, ::Any, ::Vararg{Any,N} where N) at ./essentials.jl:709
+ [19] inlineeval(::Module, ::String, ::Int64, ::Int64, ::String; softscope::Bool) at /home/joaogui/.vscode/extensions/julialang.language-julia-1.0.8/scripts/packages/VSCodeServer/src/eval.jl:83
+ [20] (::VSCodeServer.var"#43#45"{VSCodeServer.ReplRunCodeRequestParams,String,Int64,Int64,String,Module,Bool})() at /home/joaogui/.vscode/extensions/julialang.language-julia-1.0.8/scripts/packages/VSCodeServer/src/eval.jl:45
+ [21] withpath(::VSCodeServer.var"#43#45"{VSCodeServer.ReplRunCodeRequestParams,String,Int64,Int64,String,Module,Bool}, ::String) at /home/joaogui/.vscode/extensions/julialang.language-julia-1.0.8/scripts/packages/VSCodeServer/src/repl.jl:118
+ [22] (::VSCodeServer.var"#42#44"{VSCodeServer.ReplRunCodeRequestParams,String,Int64,Int64,String,Module,Bool,Bool})() at /home/joaogui/.vscode/extensions/julialang.language-julia-1.0.8/scripts/packages/VSCodeServer/src/eval.jl:43
+ [23] hideprompt(::VSCodeServer.var"#42#44"{VSCodeServer.ReplRunCodeRequestParams,String,Int64,Int64,String,Module,Bool,Bool}) at /home/joaogui/.vscode/extensions/julialang.language-julia-1.0.8/scripts/packages/VSCodeServer/src/repl.jl:36
+ [24] repl_runcode_request(::VSCodeServer.JSONRPC.JSONRPCEndpoint{Base.PipeEndpoint,Base.PipeEndpoint}, ::VSCodeServer.ReplRunCodeRequestParams) at /home/joaogui/.vscode/extensions/julialang.language-julia-1.0.8/scripts/packages/VSCodeServer/src/eval.jl:23
+ [25] dispatch_msg(::VSCodeServer.JSONRPC.JSONRPCEndpoint{Base.PipeEndpoint,Base.PipeEndpoint}, ::VSCodeServer.JSONRPC.MsgDispatcher, ::Dict{String,Any}) at /home/joaogui/.vscode/extensions/julialang.language-julia-1.0.8/scripts/packages/JSONRPC/src/typed.jl:66
+ [26] macro expansion at /home/joaogui/.vscode/extensions/julialang.language-julia-1.0.8/scripts/packages/VSCodeServer/src/VSCodeServer.jl:95 [inlined]
+ [27] (::VSCodeServer.var"#61#63"{Bool,String})() at ./task.jl:356
+in expression starting at /home/joaogui/javis_tutorials/tutorual1.jl:45
