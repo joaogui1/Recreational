@@ -1,4 +1,4 @@
-using Javis
+using Javis, Animations
 myvideo = Video(500, 500)
 
 function ground(args...)
