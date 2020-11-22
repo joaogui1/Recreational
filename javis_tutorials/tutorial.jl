@@ -11,7 +11,7 @@ function object(p=O, color="black")
     circle(p, 25, :fill)
     return p
 end
-
+##
 Background(1:70, ground)
 red_ball = Object(1:70, (args...) -> object(O, "red"), Point(100, 0))
 
@@ -44,6 +44,7 @@ blue_ball = Object(1:70, (args...)-> object(O, "blue"), Point(200,80))
 act!(blue_ball, Action(anim_rotate_around(2π, 0.0, red_ball)))
 render(
     myvideo;
-    pathname="round2.mp4"
+    ffmpeg_loglevel = "debug",
+    pathname="round2.gif"
 )
 ##
