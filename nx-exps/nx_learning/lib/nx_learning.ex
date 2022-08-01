@@ -13,6 +13,7 @@ defmodule NxLearning do
 
   """
   def hello do
-    :world
+    t = Nx.tensor([[1, 2], [3, 4]])
+    Nx.shape(t)
   end
 end
