@@ -1,0 +1,15 @@
+quit
+reset-root #q2jjqfo3ea
+reflog
+view base.data.List.reverse
+move.term base.data.List.foldLeft base.data.List.foldl
+ui
+view base.data.List.foldLeft
+view 4
+find : [a] -> [a]
+ls base.data.List
+quit
+ls base.data.List
+run helloWorld
+fork .base lib.base
+cd quickstart

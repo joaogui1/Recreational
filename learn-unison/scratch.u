@@ -1,0 +1,11 @@
+myTerm = List.map (x -> x * 10) [1,2,3,4,5,6]
+> myTerm
+
+increment : Nat -> Nat
+increment n = n + 1
+
+helloWorld : '{IO, Exception} ()
+helloWorld = do
+  use Text ++
+  name = !console.getLine
+  printLine ("Hello " ++ name)
