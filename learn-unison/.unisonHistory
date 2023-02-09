@@ -1,3 +1,11 @@
+test
+view square
+add
+view test.Result
+find.all List.reverse
+find List.reverse
+fork .base lib.base
+cd tour
 quit
 reset-root #q2jjqfo3ea
 reflog
