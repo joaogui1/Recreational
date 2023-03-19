@@ -1,0 +1,1 @@
+/Users/joaogui1/Documents/Programming/Recreational/rust-learn/the-book/guessing_game/target/debug/guessing_game: /Users/joaogui1/Documents/Programming/Recreational/rust-learn/the-book/guessing_game/src/main.rs

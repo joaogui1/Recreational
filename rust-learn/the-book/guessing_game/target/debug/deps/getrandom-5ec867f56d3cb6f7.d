@@ -1,0 +1,11 @@
+/Users/joaogui1/Documents/Programming/Recreational/rust-learn/the-book/guessing_game/target/debug/deps/getrandom-5ec867f56d3cb6f7.rmeta: /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/lib.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/error.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/util.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/error_impls.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/util_libc.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/use_file.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/macos.rs
+
+/Users/joaogui1/Documents/Programming/Recreational/rust-learn/the-book/guessing_game/target/debug/deps/getrandom-5ec867f56d3cb6f7.d: /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/lib.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/error.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/util.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/error_impls.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/util_libc.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/use_file.rs /Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/macos.rs
+
+/Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/lib.rs:
+/Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/error.rs:
+/Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/util.rs:
+/Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/error_impls.rs:
+/Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/util_libc.rs:
+/Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/use_file.rs:
+/Users/joaogui1/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/macos.rs:
